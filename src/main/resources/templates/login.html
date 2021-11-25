@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+</head>
+<body>
+	<header th:replace="fragments/header :: cabecalho">
+		<div>header</div>
+	</header>
+	
+	<div th:if="${param.logout}">
+	Você está desconectado.
+	</div>
+	
+	<div th:if="${param.error}">
+	Senha/usuário inválido.
+	</div>
+	
+
+	
+	<div  class="layout-main">
+		
+		<section layout:fragment="corpo">
+			<form th:action="@{/login}" method="POST">
+			  <label for="fname">Login:</label><br>
+			  <input type="text" id="fname" name="username"><br>
+			  <label for="lname">Senha:</label><br>
+			  <input type="password" id="lname" name="password">
+			  <br><br>
+			  <input type="submit" value="Entrar">
+			</form>
+		</section>
+	</div>	
+		
+	
+	
+</body>
+</html>
