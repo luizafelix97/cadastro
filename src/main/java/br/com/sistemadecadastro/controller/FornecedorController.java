@@ -1,24 +1,18 @@
 package br.com.sistemadecadastro.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.validation.Valid;
-
-import br.com.sistemadecadastro.domain.Cargo;
 import br.com.sistemadecadastro.domain.Fornecedor;
 
 import br.com.sistemadecadastro.domain.enums.UF;
-import br.com.sistemadecadastro.service.CargoService;
 import br.com.sistemadecadastro.service.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,17 +23,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/fornecedor")
+@RequestMapping("/fornecedores")
 public class FornecedorController {
 	
 	@Autowired
 	private FornecedorService fornecedorService;
 		
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		//binder.addValidators(new fornecedorValidator());
-	}
-	
+		
 	@GetMapping("/cadastrar")
 	public String cadastrar(Fornecedor fornecedor) {
 		return "fornecedor/cadastro";
@@ -60,7 +50,7 @@ public class FornecedorController {
 		
 		fornecedorService.salvar(fornecedor);
 		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
-		return "redirect:/fornecedor/cadastrar";
+		return "redirect:/fornecedores/cadastrar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -103,8 +93,7 @@ public class FornecedorController {
         model.addAttribute("fornecedor", fornecedorService.buscarPorDatas(entrada, saida));
         return "fornecedor/lista";
     }
-	
-	
+		
 	@ModelAttribute("ufs")
 	public UF[] getUFs() {
 		return UF.values();

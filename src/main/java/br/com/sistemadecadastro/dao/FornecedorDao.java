@@ -20,8 +20,6 @@ public interface FornecedorDao {
     
     List<Fornecedor> findByNome(String nome);
 
-	List<Fornecedor> findByCargoId(Long id);
-
 	List<Fornecedor> findByDataEntradaDataSaida(LocalDate entrada, LocalDate saida);
 
 	List<Fornecedor> findByDataEntrada(LocalDate entrada);

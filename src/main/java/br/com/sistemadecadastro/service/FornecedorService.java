@@ -21,8 +21,6 @@ public interface FornecedorService {
 
 	List<Fornecedor> buscarPorNome(String nome);
 
-	List<Fornecedor> buscarPorCargo(Long id);
-	
 	List<Fornecedor> buscarPorDatas(LocalDate entrada, LocalDate saida);
 }
 
