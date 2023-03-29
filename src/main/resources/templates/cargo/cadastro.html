@@ -35,8 +35,8 @@
 	                        		autofocus="autofocus" th:field="*{nome}"/>
 	                    </div>
 	                    <div class="form-group col-md-4">
-	                        <label for="departamento">Departamento</label>
-	                        <select id="departamento" class="form-control" th:field="*{departamento}">
+	                        <label for="ministerio">Departamento</label>
+	                        <select id="ministerio" class="form-control" th:field="*{ministerio}">
 	                            <option value="">Selecione</option>
 	                            <option th:each="d : ${departamentos}" 
 	                                    th:value="${d.id}" th:text="${d.nome}">Administração</option>

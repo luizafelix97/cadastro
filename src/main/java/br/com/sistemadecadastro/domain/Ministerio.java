@@ -8,15 +8,15 @@ import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "DEPARTAMENTOS")
-public class Departamento extends AbstractEntity<Long> {
+@Table(name = "MINISTERIO")
+public class Ministerio extends AbstractEntity<Long> {
 
 	@NotBlank(message = "Informe um nome.")
 	@Size(min = 3, max = 60, message = "O nome do departamento deve ter entre {min} e {max} caracteres.")
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 	
-	@OneToMany(mappedBy = "departamento")
+	@OneToMany(mappedBy = "ministerio")
 	private List<Cargo> cargos;
 
 	public String getNome() {

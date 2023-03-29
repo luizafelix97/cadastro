@@ -10,12 +10,12 @@
 	                <ul class="navbar-nav mr-auto">
 	                    <li class="nav-item active">
 	                        <i class="oi oi-caret-right"></i>
-	                        <span>Lista de Departamentos</span>
+	                        <span>Lista de Ministérios</span>
 	                    </li>
 	                </ul>
-	                <a class="btn btn-primary btn-md" th:href="@{/departamentos/cadastrar}" role="button">
+	                <a class="btn btn-primary btn-md" th:href="@{/ministerio/cadastrar}" role="button">
 	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Novo Departamento</span>
+	                    <span>Novo Ministérios</span>
 	                </a>
 	            </div>
 	        </nav>
@@ -34,14 +34,14 @@
 					    </tr>
 					    </thead>
 					    <tbody>
-					     <tr th:each="d : ${departamentos}">
+					     <tr th:each="d : ${ministerio}">
 					         <td th:text="${d.id}">3</td>
 					         <td th:text="${d.nome}">Administração</td>
 					         <td colspan="2">
-					             <a class="btn btn-info btn-sm" th:href="@{/departamentos/editar/{id} (id=${d.id}) }" role="button">
+					             <a class="btn btn-info btn-sm" th:href="@{/ministerio/editar/{id} (id=${d.id}) }" role="button">
 					                 <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 					             </a>
-					             <button th:id="${ 'btn_departamentos/excluir/' + d.id}" type="button" class="btn btn-danger btn-sm"
+					             <button th:id="${ 'btn_ministerio/excluir/' + d.id}" type="button" class="btn btn-danger btn-sm"
 					             		data-toggle="modal" data-target="#myModal">
 					                 <span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
 					             </button>

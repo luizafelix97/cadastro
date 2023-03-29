@@ -24,8 +24,8 @@ public class Cargo extends AbstractEntity<Long> {
 	
 	@NotNull(message = "Selecione o departamento relativo ao cargo.")
 	@ManyToOne
-	@JoinColumn(name = "id_departamento_fk")
-	private Departamento departamento;
+	@JoinColumn(name = "id_ministerio_fk")
+	private Ministerio ministerio;
 	
 	@OneToMany(mappedBy = "cargo")
 	private List<Funcionario> funcionarios;
@@ -38,12 +38,12 @@ public class Cargo extends AbstractEntity<Long> {
 		this.nome = nome;
 	}
 
-	public Departamento getDepartamento() {
-		return departamento;
+	public Ministerio getDepartamento() {
+		return ministerio;
 	}
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+	public void setDepartamento(Ministerio ministerio) {
+		this.ministerio = ministerio;
 	}
 
 	public List<Funcionario> getFuncionarios() {

@@ -2,9 +2,9 @@ package br.com.sistemadecadastro.service.impl;
 
 import java.util.List;
 
-import br.com.sistemadecadastro.dao.DepartamentoDao;
-import br.com.sistemadecadastro.domain.Departamento;
-import br.com.sistemadecadastro.service.DepartamentoService;
+import br.com.sistemadecadastro.dao.MinisterioDao;
+import br.com.sistemadecadastro.domain.Ministerio;
+import br.com.sistemadecadastro.service.MinisterioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,21 +12,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class DepartamentoServiceImpl implements DepartamentoService {
+public class MinisterioServiceImpl implements MinisterioService {
 	
 	@Autowired
-	private DepartamentoDao dao;
+	private MinisterioDao dao;
 
 	@Transactional(readOnly = false)
 	@Override
-	public void salvar(Departamento departamento) {
-		dao.save(departamento);		
+	public void salvar(Ministerio ministerio) {
+		dao.save(ministerio);
 	}
 
 	@Transactional(readOnly = false)
 	@Override
-	public void editar(Departamento departamento) {
-		dao.update(departamento);		
+	public void editar(Ministerio ministerio) {
+		dao.update(ministerio);
 	}
 
 	@Transactional(readOnly = false)
@@ -37,14 +37,14 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public Departamento buscarPorId(Long id) {
+	public Ministerio buscarPorId(Long id) {
 		
 		return dao.findById(id);
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Departamento> buscarTodos() {
+	public List<Ministerio> buscarTodos() {
 		
 		return dao.findAll();
 	}

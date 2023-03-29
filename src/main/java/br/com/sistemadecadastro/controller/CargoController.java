@@ -5,9 +5,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import br.com.sistemadecadastro.domain.Cargo;
-import br.com.sistemadecadastro.domain.Departamento;
+import br.com.sistemadecadastro.domain.Ministerio;
 import br.com.sistemadecadastro.service.CargoService;
-import br.com.sistemadecadastro.service.DepartamentoService;
+import br.com.sistemadecadastro.service.MinisterioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +28,7 @@ public class CargoController {
 	@Autowired
 	private CargoService cargoService;
 	@Autowired
-	private DepartamentoService departamentoService;
+	private MinisterioService ministerioService;
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cargo cargo) {
@@ -83,7 +83,7 @@ public class CargoController {
 	}
 	
 	@ModelAttribute("departamentos")
-	public List<Departamento> listaDeDepartamentos() {
-		return departamentoService.buscarTodos();
+	public List<Ministerio> listaDeDepartamentos() {
+		return ministerioService.buscarTodos();
 	}	
 }

@@ -1,7 +1,7 @@
 package br.com.sistemadecadastro.conversor;
 
-import br.com.sistemadecadastro.domain.Departamento;
-import br.com.sistemadecadastro.service.DepartamentoService;
+import br.com.sistemadecadastro.domain.Ministerio;
+import br.com.sistemadecadastro.service.MinisterioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 ;
 
 @Component
-public class StringToDepartamentoConverter implements Converter<String, Departamento> {
+public class StringToDepartamentoConverter implements Converter<String, Ministerio> {
 	
 	@Autowired
-	private DepartamentoService service;
+	private MinisterioService service;
 
 	@Override
-	public Departamento convert(String text) {
+	public Ministerio convert(String text) {
 		if (text.isEmpty()) {
 			return null;
 		}
