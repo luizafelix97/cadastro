@@ -50,7 +50,7 @@ public class MinisterioServiceImpl implements MinisterioService {
 	}
 
 	@Override
-	public boolean departamentoTemCargos(Long id) {
+	public boolean ministerioTemCargos(Long id) {
 		if (buscarPorId(id).getCargos().isEmpty()) {
 			return false;
 		}

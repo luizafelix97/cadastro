@@ -67,7 +67,7 @@ public class MinisterioController {
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		
-		if (service.departamentoTemCargos(id)) {
+		if (service.ministerioTemCargos(id)) {
 			model.addAttribute("fail", "Ministerio não removido. Possui cargo(s) vinculado(s).");
 		} else {
 			service.excluir(id);
