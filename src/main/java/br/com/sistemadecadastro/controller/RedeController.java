@@ -1,7 +1,9 @@
 package br.com.sistemadecadastro.controller;
 
 import br.com.sistemadecadastro.domain.Ministerio;
+import br.com.sistemadecadastro.domain.Rede;
 import br.com.sistemadecadastro.service.MinisterioService;
+import br.com.sistemadecadastro.service.RedeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,60 +17,60 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/ministerio")
+@RequestMapping("/rede")
 public class RedeController {
     @Autowired
-    private MinisterioService service;
+    private RedeService service;
 
     @GetMapping("/cadastrar")
-    public String cadastrar(Ministerio ministerio) {
-        return "ministerio/cadastro";
+    public String cadastrar(Rede rede) {
+        return "rede/cadastro";
     }
 
     @GetMapping("/listar")
     public String listar(ModelMap model) {
-        model.addAttribute("ministerio", service.buscarTodos());
-        return "ministerio/lista";
+        model.addAttribute("rede", service.buscarTodos());
+        return "rede/lista";
     }
 
     @PostMapping("/salvar")
-    public String salvar(@Valid Ministerio ministerio, BindingResult result, RedirectAttributes attr) {
+    public String salvar(@Valid Rede rede, BindingResult result, RedirectAttributes attr) {
 
         if (result.hasErrors()) {
-            return "ministerio/cadastro";
+            return "rede/cadastro";
         }
 
-        service.salvar(ministerio);
-        attr.addFlashAttribute("success", "Ministerio inserido com sucesso.");
-        return "redirect:/ministerio/cadastrar";
+        service.salvar(rede);
+        attr.addFlashAttribute("success", "Rede inserido com sucesso.");
+        return "redirect:/rede/cadastrar";
     }
 
     @GetMapping("/editar/{id}")
     public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-        model.addAttribute("ministerio", service.buscarPorId(id));
-        return "ministerio/cadastro";
+        model.addAttribute("rede", service.buscarPorId(id));
+        return "rede/cadastro";
     }
 
     @PostMapping("/editar")
-    public String editar(@Valid Ministerio ministerio, BindingResult result, RedirectAttributes attr) {
+    public String editar(@Valid Rede rede, BindingResult result, RedirectAttributes attr) {
 
         if (result.hasErrors()) {
-            return "ministerio/cadastro";
+            return "rede/cadastro";
         }
 
-        service.editar(ministerio);
-        attr.addFlashAttribute("success", "Ministerio editado com sucesso.");
-        return "redirect:/ministerio/cadastrar";
+        service.editar(rede);
+        attr.addFlashAttribute("success", "Rede editado com sucesso.");
+        return "redirect:/rede/cadastrar";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable("id") Long id, ModelMap model) {
 
-        if (service.ministerioTemCargos(id)) {
-            model.addAttribute("fail", "Ministerio não removido. Possui cargo(s) vinculado(s).");
+        if (service.redeTemCargos(id)) {
+            model.addAttribute("fail", "Rede não removido. Possui cargo(s) vinculado(s).");
         } else {
             service.excluir(id);
-            model.addAttribute("success", "Ministerio excluído com sucesso.");
+            model.addAttribute("success", "Rede excluído com sucesso.");
         }
 
         return listar(model);
