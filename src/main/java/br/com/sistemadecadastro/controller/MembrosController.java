@@ -49,7 +49,7 @@ public class MembrosController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("funcionarios", membroService.buscarTodos());
+		model.addAttribute("membros", membroService.buscarTodos());
 		return "membro/lista";
 	}
 	
@@ -61,7 +61,7 @@ public class MembrosController {
 		}
 		
 		membroService.salvar(membros);
-		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
+		attr.addFlashAttribute("success", "Membro inserido com sucesso.");
 		return "redirect:/membros/cadastrar";
 	}
 	
@@ -79,7 +79,7 @@ public class MembrosController {
 		}
 		
 		membroService.editar(membros);
-		attr.addFlashAttribute("success", "Funcionário editado com sucesso.");
+		attr.addFlashAttribute("success", "Membro editado com sucesso.");
 		return "redirect:/membros/cadastrar";
 	}	
 	
