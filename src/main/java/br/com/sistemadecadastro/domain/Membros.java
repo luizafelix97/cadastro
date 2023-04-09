@@ -14,8 +14,8 @@ import org.springframework.format.annotation.NumberFormat.Style;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "FUNCIONARIOS")
-public class Funcionario extends AbstractEntity<Long> {
+@Table(name = "MEMBROS")
+public class Membros extends AbstractEntity<Long> {
 
 	@NotBlank
 	@Size(max = 255, min = 3)

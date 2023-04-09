@@ -6,10 +6,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import br.com.sistemadecadastro.domain.Cargo;
-import br.com.sistemadecadastro.domain.Funcionario;
+import br.com.sistemadecadastro.domain.Membros;
 import br.com.sistemadecadastro.domain.enums.UF;
 import br.com.sistemadecadastro.service.CargoService;
-import br.com.sistemadecadastro.service.FuncionarioService;
+import br.com.sistemadecadastro.service.MembroService;
 import br.com.sistemadecadastro.validator.FuncionarioValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,11 +29,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/funcionarios")
-public class FuncionarioController {
+@RequestMapping("/membros")
+public class MembrosController {
 	
 	@Autowired
-	private FuncionarioService funcionarioService;
+	private MembroService membroService;
 	@Autowired
 	private CargoService cargoService;
 	
@@ -43,63 +43,63 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Funcionario funcionario) {
-		return "funcionario/cadastro";
+	public String cadastrar(Membros membros) {
+		return "membro/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("funcionarios", funcionarioService.buscarTodos());
-		return "funcionario/lista"; 
+		model.addAttribute("funcionarios", membroService.buscarTodos());
+		return "membro/lista";
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Membros membros, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
-			return "funcionario/cadastro";
+			return "membro/cadastro";
 		}
 		
-		funcionarioService.salvar(funcionario);
+		membroService.salvar(membros);
 		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
-		return "redirect:/funcionarios/cadastrar";
+		return "redirect:/membros/cadastrar";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("funcionario", funcionarioService.buscarPorId(id));
-		return "funcionario/cadastro";
+		model.addAttribute("funcionario", membroService.buscarPorId(id));
+		return "membros/cadastro";
 	}
 	
 	@PostMapping("/editar")
-	public String editar(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid Membros membros, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
-			return "funcionario/cadastro";
+			return "membro/cadastro";
 		}
 		
-		funcionarioService.editar(funcionario);
+		membroService.editar(membros);
 		attr.addFlashAttribute("success", "Funcionário editado com sucesso.");
-		return "redirect:/funcionarios/cadastrar";
+		return "redirect:/membros/cadastrar";
 	}	
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		funcionarioService.excluir(id);
+		membroService.excluir(id);
 		attr.addFlashAttribute("success", "Funcionário removido com sucesso.");
-		return "redirect:/funcionarios/listar";
+		return "redirect:/membros/listar";
 	}	
 	
 	@GetMapping("/buscar/nome")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {		
-		model.addAttribute("funcionarios", funcionarioService.buscarPorNome(nome));
-		return "funcionario/lista";
+		model.addAttribute("funcionarios", membroService.buscarPorNome(nome));
+		return "membro/lista";
 	}
 	
 	@GetMapping("/buscar/cargo")
 	public String getPorCargo(@RequestParam("id") Long id, ModelMap model) {
-		model.addAttribute("funcionarios", funcionarioService.buscarPorCargo(id));
-		return "funcionario/lista";
+		model.addAttribute("funcionarios", membroService.buscarPorCargo(id));
+		return "membro/lista";
 	}		
 	
     @GetMapping("/buscar/data")
@@ -107,8 +107,8 @@ public class FuncionarioController {
                               @RequestParam("saida") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate saida,
                               ModelMap model) {
 
-        model.addAttribute("funcionarios", funcionarioService.buscarPorDatas(entrada, saida));
-        return "funcionario/lista";
+        model.addAttribute("funcionarios", membroService.buscarPorDatas(entrada, saida));
+        return "membro/lista";
     }
 	
 	@ModelAttribute("cargos")

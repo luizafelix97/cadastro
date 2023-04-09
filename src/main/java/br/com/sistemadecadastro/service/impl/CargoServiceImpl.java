@@ -45,8 +45,8 @@ public class CargoServiceImpl implements CargoService {
 	}
 
 	@Override
-	public boolean cargoTemFuncionarios(Long id) {
-		if (buscarPorId(id).getFuncionarios().isEmpty()) {
+	public boolean temMembros(Long id) {
+		if (buscarPorId(id).getMembros().isEmpty()) {
 			return false;
 		}
 		return true;

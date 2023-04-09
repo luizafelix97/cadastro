@@ -12,5 +12,5 @@ localhost:8080/departamentos/listar <br>
 localhost:8080/cargos/cadastrar <br>
 localhost:8080/cargos/listar <br>
 <br>
-localhost:8080/funcionarios/cadastrar <br>
-localhost:8080/funcionarios/listar <br>
+localhost:8080/membros/cadastrar <br>
+localhost:8080/membros/listar <br>

@@ -19,4 +19,7 @@ public class Rede extends AbstractEntity<Long> {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

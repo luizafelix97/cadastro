@@ -18,5 +18,4 @@ public interface MinisterioService {
     
     List<Ministerio> buscarTodos();
 
-	boolean ministerioTemCargos(Long id);
 }

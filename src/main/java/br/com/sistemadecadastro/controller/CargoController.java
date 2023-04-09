@@ -1,11 +1,8 @@
 package br.com.sistemadecadastro.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import br.com.sistemadecadastro.domain.Cargo;
-import br.com.sistemadecadastro.domain.Ministerio;
 import br.com.sistemadecadastro.service.CargoService;
 import br.com.sistemadecadastro.service.MinisterioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,7 +69,7 @@ public class CargoController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
-		if (cargoService.cargoTemFuncionarios(id)) {
+		if (cargoService.temMembros(id)) {
 			attr.addFlashAttribute("fail", "Cargo não excluido. Tem funcionário(s) vinculado(s).");
 		} else {
 			cargoService.excluir(id);
@@ -81,9 +77,5 @@ public class CargoController {
 		}
 		return "redirect:/cargos/listar";
 	}
-	
-	@ModelAttribute("departamentos")
-	public List<Ministerio> listaDeDepartamentos() {
-		return ministerioService.buscarTodos();
-	}	
+
 }

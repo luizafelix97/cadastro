@@ -49,12 +49,4 @@ public class MinisterioServiceImpl implements MinisterioService {
 		return dao.findAll();
 	}
 
-	@Override
-	public boolean ministerioTemCargos(Long id) {
-		if (buscarPorId(id).getCargos().isEmpty()) {
-			return false;
-		}
-		return true;
-	}
-
 }
