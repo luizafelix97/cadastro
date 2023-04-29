@@ -8,7 +8,7 @@ import org.springframework.validation.Validator;
 
 
 
-public class FuncionarioValidator implements Validator {
+public class MembroValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {

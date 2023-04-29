@@ -10,7 +10,7 @@ import br.com.sistemadecadastro.domain.Membros;
 import br.com.sistemadecadastro.domain.enums.UF;
 import br.com.sistemadecadastro.service.CargoService;
 import br.com.sistemadecadastro.service.MembroService;
-import br.com.sistemadecadastro.validator.FuncionarioValidator;
+import br.com.sistemadecadastro.validator.MembroValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class MembrosController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(new FuncionarioValidator());
+		binder.addValidators(new MembroValidator());
 	}
 	
 	@GetMapping("/cadastrar")
